@@ -8,11 +8,101 @@ class Leapyear {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a year : ");
         int year = scanner.nextInt();
-        System.out.print("Enter a year : ");
+        System.out.print("Enter a day : ");
         int day = scanner.nextInt();
         isLeapYear(year);
 //        leapYearTest();
         numToDay(day, year);
+        ifNumToDay(day);
+
+    }
+
+    private static void ifNumToDay(int day) {
+        int month = 1;
+        if (day > 31) {
+            month++;
+            day -= 31;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
+        if (day > 28) {
+            month++;
+            day -= 28;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
+        if (day > 31) {
+            month++;
+            day -= 31;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
+        if (day > 30) {
+            month++;
+            day -= 30;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
+        if (day > 31) {
+            month++;
+            day -= 31;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
+        if (day > 30) {
+            month++;
+            day -= 30;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
+        if (day > 31) {
+            month++;
+            day -= 31;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
+        if (day > 31) {
+            month++;
+            day -= 31;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
+        if (day > 30) {
+            month++;
+            day -= 30;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
+        if (day > 31) {
+            month++;
+            day -= 31;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
+        if (day > 30) {
+            month++;
+            day -= 30;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
+        if (day > 31) {
+            month = 12;
+            day -= 31;
+        } else {
+            System.out.println(month + "월" + day + "일");
+            return;
+        }
 
     }
 

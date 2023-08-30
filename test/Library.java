@@ -1,6 +1,6 @@
 package test;
 
-import static java.lang.Math.random;
+import org.junit.jupiter.api.function.Executable;
 
 public class Library {
     private String[] list;
@@ -37,10 +37,9 @@ public class Library {
     }
 
 
-    public void delete(String book) {
+    public Executable delete(String book) {
         if (count == 0) {
-            System.out.println("책이 한권도 없습니다.");
-            return;
+            throw new IllegalAccessError("첵장이 비었습니다");
         }
         for (int i = 0; i < list.length; i++) {
             if (list[i] == book) {
@@ -49,10 +48,11 @@ public class Library {
                 }
                 list[list.length - 1] = "";
                 count--;
-                return;
+                return null;
             }
         }
         System.out.println("[" + book + "]과" + "일치하는 책이 없습니다");
+        return null;
     }
 
     public void find(String book) {
@@ -74,80 +74,12 @@ public class Library {
         System.out.println();
     }
 
-    public static class Main {
-        public static void main(String[] args) {
-            int random1 = (int) (random() * 6) + 1;
-            int random2 = (int) (random() * 6) + 1;
-
-            Dice dice1 = new Dice(random1);
-            Dice dice2 = new Dice(random2);
-
-            System.out.println("주사위 합 = " + DiceCalculator.addDice(dice2, dice1));
-
-            String str = "abcdefg";
-
-            int val = (int) (random() * str.length());
-            System.out.println(DiceCalculator.getIndexOf(str, val));
-
-            int random4 = (int) (random() * 6 + 1);
-            Dice dice = new Dice(random4);
-            System.out.println("주사위 눈이 홀수 :" + DiceCalculator.odd(dice));
-            try {
-                new Library(0);
-
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-            try {
-                new Library(-1);
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-
-            Library library = new Library(5);
-
-            library.add("책 재목1");
-            library.add("책 재목2");
-            library.add("책 재목3");
-            library.add("책 재목4");
-            try {
-                library.add("책 재목2");
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-            library.delete("책 재목2");
-            library.delete("책 재목4");
-            library.find("책 재목1");
-            library.find("책 제목2");
-            library.findAll();
-        }
-
-        private static class DiceCalculator {
-
-
-            public static boolean odd(Dice dice) {
-                return dice.getNumber() % 2 != 0;
-            }
-
-            public static int addDice(Dice dice2, Dice dice1) {
-                return dice1.getNumber() + dice2.getNumber();
-            }
-
-            public static String getIndexOf(String str, int val) {
-                return str.substring(0, val + 1);
-            }
-        }
-
-        private static class Dice {
-            private int number;
-
-            public int getNumber() {
-                return number;
-            }
-
-            public Dice(int number) {
-                this.number = number;
-            }
-        }
+    public int getLibrarySize() {
+        return list.length;
     }
+
+    public int getCount() {
+        return count;
+    }
+
 }
