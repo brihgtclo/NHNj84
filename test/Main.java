@@ -2,20 +2,22 @@ package test;
 
 import static java.lang.Math.random;
 
+import java.util.Random;
+
 /**
  *
  */
 public class Main {
 
     public static void main(String[] args) {
+        Random r = new Random();
+        int random1 = r.nextInt(6) + 1;
+        int random2 = r.nextInt(6) + 1;
 
-        int random1 = (int) (random() * 6) + 1;
-        int random2 = (int) (random() * 6) + 1;
+        Dice first = new Dice(random1);
+        Dice second = new Dice(random2);
 
-        Dice dice1 = new Dice(random1);
-        Dice dice2 = new Dice(random2);
-
-        System.out.println("주사위 합 = " + DiceCalculator.addDice(dice2, dice1));
+        System.out.println("주사위 합 = " + DiceCalculator.addDice(first, second));
 
         String str = "abcdefg";
 
@@ -27,7 +29,6 @@ public class Main {
         System.out.println("주사위 눈이 홀수 :" + DiceCalculator.odd(dice));
         try {
             new Library(0);
-
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -46,7 +47,6 @@ public class Main {
         try {
             library.add("책 재목2");
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
         }
         library.delete("책 재목2");
         library.delete("책 재목4");

@@ -2,8 +2,9 @@ package N0829;
 
 import java.util.Scanner;
 
-public class leapyear {
+class Leapyear {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a year : ");
         int year = scanner.nextInt();
