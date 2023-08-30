@@ -2,8 +2,13 @@ package test;
 
 import static java.lang.Math.random;
 
+/**
+ *
+ */
 public class Main {
+
     public static void main(String[] args) {
+
         int random1 = (int) (random() * 6) + 1;
         int random2 = (int) (random() * 6) + 1;
 
@@ -12,7 +17,7 @@ public class Main {
 
         System.out.println("주사위 합 = " + DiceCalculator.addDice(dice2, dice1));
 
-        String str= "abcdefg";
+        String str = "abcdefg";
 
         int val = (int) (random() * str.length());
         System.out.println(DiceCalculator.getIndexOf(str, val));
@@ -20,15 +25,15 @@ public class Main {
         int random4 = (int) (random() * 6 + 1);
         Dice dice = new Dice(random4);
         System.out.println("주사위 눈이 홀수 :" + DiceCalculator.odd(dice));
-        try{
+        try {
             new Library(0);
 
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        try{
-            new  Library(-1);
-        }catch (IllegalArgumentException e ) {
+        try {
+            new Library(-1);
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
@@ -38,9 +43,9 @@ public class Main {
         library.add("책 재목2");
         library.add("책 재목3");
         library.add("책 재목4");
-        try{
+        try {
             library.add("책 재목2");
-        }catch (IllegalArgumentException e ) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
         library.delete("책 재목2");
@@ -53,14 +58,12 @@ public class Main {
     private static class DiceCalculator {
 
 
-
-
         public static boolean odd(Dice dice) {
             return dice.getNumber() % 2 != 0;
         }
 
         public static int addDice(Dice dice2, Dice dice1) {
-            return dice1.getNumber()+dice2.getNumber();
+            return dice1.getNumber() + dice2.getNumber();
         }
 
         public static String getIndexOf(String str, int val) {
