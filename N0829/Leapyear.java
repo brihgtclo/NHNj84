@@ -19,28 +19,39 @@ class Leapyear {
     private static void numToDay(int day, int year) {
         int[] numToDay = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         int[] numToDayLeap = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        int m;
 
-        if ((year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) && day <= 366) {
-            for (int i = 0; i < 12; i++) {
-                if (day > numToDayLeap[i]) {
-                    day -= numToDayLeap[i];
-                } else {
-                    System.out.println((i + 1) + " 월 " + day + "일");
-
-                    break;
-                }
-            }
+        if (isLeapYearBooean(day, year)) {
+            leapYearDay(day, numToDayLeap);
         } else {
-            for (int i = 0; i < 12; i++) {
-                if (day > numToDay[i]) {
-                    day -= numToDay[i];
-                } else {
-                    System.out.println((i + 1) + " 월 " + day + "일");
-                    break;
-                }
+            Day(day, numToDay);
+        }
+    }
+
+    private static void Day(int day, int[] numToDay) {
+        for (int i = 0; i < 12; i++) {
+            if (day > numToDay[i]) {
+                day -= numToDay[i];
+            } else {
+                System.out.println((i + 1) + " 월 " + day + "일");
+                break;
             }
         }
+    }
+
+    private static void leapYearDay(int day, int[] numToDayLeap) {
+        for (int i = 0; i < 12; i++) {
+            if (day > numToDayLeap[i]) {
+                day -= numToDayLeap[i];
+            } else {
+                System.out.println((i + 1) + " 월 " + day + "일");
+
+                break;
+            }
+        }
+    }
+
+    private static boolean isLeapYearBooean(int day, int year) {
+        return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) && day <= 366;
     }
 
     private static void leapYearTest() {
