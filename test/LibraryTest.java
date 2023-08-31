@@ -61,19 +61,12 @@ public class LibraryTest {
     }
 
     @Test
-    @DisplayName("Library qls 찬 경우 테스트")
+    @DisplayName("Library 빈 경우 테스트")
     void emptyLibraryTest() {
         Library library = new Library(1);
 
-        Assertions.assertThrows(IllegalAccessError.class, library.delete("book 1"));
+        Assertions.assertThrows(IllegalAccessError.class, () -> library.delete("book 1"));
     }
 
-//    @Test
-//    @DisplayName("Library 책이 중복된 경우")
-//    void LibraryTest() {
-//        Library library = new Library(2);
-//        library.delete("book 1");
-//
-//        Assertions.assertThrows(IllegalArgumentException.class, () -> library.add("book 1"));
-//    }
+
 }

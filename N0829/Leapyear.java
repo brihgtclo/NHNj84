@@ -18,6 +18,7 @@ class Leapyear {
     }
 
     private static void ifNumToDay(int day) {
+        //"="이 들어다 있으면 안돼고 만약 day값이 31이면 if 문이 실행이 안되도 30일의 if문에서 걸리기 때문에 문제가 있다
         int month = 1;
         if (day > 31) {
             month++;
